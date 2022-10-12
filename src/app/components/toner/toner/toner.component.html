@@ -1,0 +1,117 @@
+<app-home-page></app-home-page>
+<div class="row" id="main-container">
+    <div class="container-fluid container-body">
+
+        <h1 class="pageTitle">Liste Des Toners
+            <span> <button type="button" class="btn btn-add" data-toggle="modal"
+                    data-target="#exampleModal" *ngIf="admin">
+                    <i class="bi bi-plus-lg"></i>
+                </button></span>
+        </h1>
+
+        <form class="navbar-search form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                    <input class="form-control" (ngModelChange)="searchDeptModele(key.value)" #key="ngModel" ngModel
+                        placeholder="Modéle" type="text" name="key">
+                </div>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Modéle</th>
+                    <th scope="col">Black</th>
+                    <th scope="col">Cyan</th>
+                    <th scope="col">Magenta</th>
+                    <th scope="col">Yellow</th>
+                    <th scope="col">Total</th>
+                    <th scope="col" *ngIf="admin">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let toner of Toners ">
+                    <th scope="row">{{toner.type_toner}}</th>
+                    <td>
+                        <i *ngIf="admin" (click)="updateBlack(toner.num_toner)" class="bi bi-dash-lg buttonMinusADD buttonMinus"></i>
+                        {{toner.black}}
+                        <i *ngIf="admin" (click)="updateBlackaa(toner.num_toner)" class="bi bi-plus-lg buttonMinusADD buttonADD"></i></td>
+
+                    <td><i
+                            *ngIf="admin" (click)="updateCyan(toner.num_toner)" class="bi bi-dash-lg buttonMinusADD buttonMinus"></i>
+                            {{toner.cyan}}
+                            <i *ngIf="admin" (click)="updateCyana(toner.num_toner)" class="bi bi-plus-lg buttonMinusADD buttonADD"></i></td>
+
+                    <td>
+                        <i *ngIf="admin" (click)="updateMagenta(toner.num_toner)" class="bi bi-dash-lg buttonMinusADD buttonMinus"></i>
+                        {{toner.magenta}}
+                        <i *ngIf="admin"
+                        (click)="updateMagentaa(toner.num_toner)" class="bi bi-plus-lg buttonMinusADD buttonADD"></i></td>
+
+                    <td>
+                        <i *ngIf="admin" (click)="updateYellow(toner.num_toner)" class="bi bi-dash-lg buttonMinusADD buttonMinus"></i>
+                        {{toner.yellow}}
+                        <i *ngIf="admin" (click)="updateYellowa(toner.num_toner)" class="bi bi-plus-lg buttonMinusADD buttonADD"></i></td>
+
+                    <td>{{toner.black + toner.cyan + toner.magenta + toner.yellow}}</td>
+                    <td>
+                        <button class="btn btn-outline-danger" type="button" *ngIf="admin"
+                            (click)="deleteToner(toner.num_toner)"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter Toner</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form (ngSubmit)="addToner(f)" #f="ngForm" class="formPrj">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nom Modéle</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                ngModel name="type_toner">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Black</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" ngModel name="black">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Yellow</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" ngModel name="yellow">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Magenta</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" ngModel name="magenta">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Cyan</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" ngModel name="cyan">
+                        </div>
+
+
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="btn" (click)="addToner(f)"
+                            data-dismiss="modal">Ajouter</button>
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

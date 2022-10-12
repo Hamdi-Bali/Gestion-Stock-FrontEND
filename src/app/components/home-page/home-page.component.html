@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <img src="/assets/images/parenco-logo.svg" class="img-fluid" id="logoPerenco" height="100">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/accueil">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/machines">Parc IT </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/imprimantes">Imprimantes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/toner">Consommables </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/spare">Spares </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a *ngIf="admin" class="nav-link dropdown-toggle firstAnchor" href="#" id="navbarDropdownMenuLink"
+            role="button" data-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <a *ngIf="!admin" routerLink="/sign_in" class="nav-link userNormal" href="#" role="button">
+            Deconnecter
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a *ngIf="admin" class="dropdown-item" routerLink="/users">Utilisateurs </a>
+            <a *ngIf="admin" class="dropdown-item" routerLink="/add_machine">Ajouter Dans Parc IT</a>
+            <a *ngIf="admin" class="dropdown-item" routerLink="/add_imprimante">Ajouter Imprimante</a>
+            <a class="dropdown-item" routerLink="/sign_in">Se Déconnecter</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

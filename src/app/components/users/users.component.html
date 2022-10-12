@@ -1,0 +1,115 @@
+<app-home-page></app-home-page>
+
+
+<h1 class="pageTitle">Liste Des Utilisateurs
+  <span><button type="submit" data-toggle="modal" data-target="#addUserModal" class="btn btn-add"> <i
+        class="bi bi-plus-lg"></i></button></span>
+</h1>
+<div class="container-fluid container-body">
+  <div class="row usersList">
+    <div *ngFor=" let user of users" class="card">
+      <!-- <img src="/assets/images/user.png" class="card-img-top" height="150"> -->
+      <i class="bi bi-person userIcon"></i>
+      <div class="card-body">
+        <p class="card-text"><span>Num :</span> {{user.num}}</p>
+        <p class="card-text"><span>Nom :</span> {{user.name}}</p>
+        <!-- <p class="card-text"><b>Mot de Passe</b> {{user.mdp}}</p> -->
+        <p class="card-text"><span>Type :</span> {{user.type}}</p>
+      </div>
+      <div class="footerCard">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifier Compte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="formPrj">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom Utilisateur </label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      ngModel required name="nom">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="mdp" required ngModel>
+                  </div>
+                  <!--
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Type Utilisateur </label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" ngModel required name="type">
+                                            </div>-->
+                  <div class="form-group">
+                    <label for="type de compte">Type Compte</label>
+                    <select name="type" ngModel class="custom-select" id="inputGroupSelect04"
+                      aria-label="Example select with button addon">
+                      <option value="admin">Admin</option>
+                      <option value="Utilisateur">Utilisateur</option>
+                    </select>
+                  </div>
+                  <div class="buttons">
+                    <button type="submit" class="btn" data-dismiss="modal" (click)="onOpenModal(f)">Save
+                      changes</button>
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" name="updateUser" data-toggle="modal" data-target="#exampleModal" class="btn btn-ilyesh "
+          (click)="onOpenModalv2(user)"><i class="bi bi-pen"></i></button>
+        <button type="button" name="delete" (click)="deleteUser(user.num)" class="btn btn-outline-danger"><i
+            class="bi bi-trash"></i></button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter Utilisateur</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form #f="ngForm" class="formPrj">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom Utilisateur</label>
+              <input type="text" class="form-control" aria-describedby="nom" name="name" required ngModel>
+            </div>
+
+            <div class="form-group">
+              <label for="type de compte">Type Compte</label>
+              <select name="type" ngModel class="custom-select" id="inputGroupSelect04"
+                aria-label="Example select with button addon">
+                <option value="admin">Admin</option>
+                <option value="Utilisateur">Utilisateur</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Password</label>
+              <input type="password" class="form-control" id="mdp" name="mdp" required ngModel>
+            </div>
+          </div>
+          <div class="buttons">
+            <button type="submit" [disabled]="f.invalid" (click)="onSubmitUser(f)" data-dismiss="modal"
+              class="btn">Ajouter</button>
+            <button type="reset" data-dismiss="modal" class="btn">Annuler</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

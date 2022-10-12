@@ -1,0 +1,28 @@
+<app-home-page></app-home-page>
+
+<div class="container">
+    <div class="col-md-7 col-lg-10 col-sm-3">
+      <h1 class="pageTitle">Ajouter Utilisateur</h1>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom Utilisateur</label>
+              <input type="text" class="form-control" aria-describedby="nom" name="name"  required ngModel>
+            </div>
+
+              <label for="type de compte">Type Compte</label>
+              <select name="type"  ngModel class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option value="admin" >Admin</option>
+                <option value="Utilisateur">Utilisateur</option>
+           
+              </select>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Password</label>
+              <input type="password" class="form-control" id="mdp" name="mdp" required ngModel>
+            </div>
+
+            <button type="submit" [disabled]="f.invalid" (click)="onSubmit(f)" class="btn btn-secondary" routerLink="/users">Ajouter</button>
+            <button type="reset" class="btn btn-primary">Annuler</button>
+          </form>
+    </div>
+</div>

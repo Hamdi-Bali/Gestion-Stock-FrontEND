@@ -1,0 +1,135 @@
+<app-home-page></app-home-page>
+
+
+<div class="row" >
+
+    <div class="container-fluid container-body">
+        <h1 class="pageTitle">Liste Des Imprimantes
+            <span>Total : {{imprimantes.length}}</span>
+            <button class="btn btn-add" (click)="refresh()">Refresh</button>
+        </h1>
+        <form class="navbar-search form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                    <input class="form-control" (ngModelChange)="searchDeptNum(key.value)" #key="ngModel" ngModel
+                        placeholder="Numéro de Série" type="text" name="key">
+                </div>
+            </div>
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <input class="form-control" (ngModelChange)="searchDeptModele(key.value)" #key="ngModel" ngModel
+                        placeholder="Modéle" type="text" name="key">
+                </div>
+            </div>
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <input class="form-control" (ngModelChange)="searchDeptSite(key.value)" #key="ngModel" ngModel
+                        placeholder="Site" type="text" name="key">
+                </div>
+            </div>
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <input class="form-control" (ngModelChange)="searchDeptGarantie(key.value)" #key="ngModel" ngModel
+                        placeholder="Garantie" type="text" name="key">
+                </div>
+            </div>
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <input class="form-control" (ngModelChange)="searchDeptType(key.value)" #key="ngModel" ngModel
+                        placeholder="Type Toner" type="text" name="key">
+                </div>
+            </div>
+
+
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Numéro de Série</th>
+                    <th scope="col">Modéle</th>
+                    <th scope="col">Site</th>
+                    <th scope="col">Garantie</th>
+                    <th scope="col">Type Toner</th>
+                    <th scope="col">Déscription</th>
+                    <th scope="col" *ngIf="admin">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let imprimante of imprimantes ">
+                    <th scope="row">{{imprimante.num_serie}}</th>
+                    <td>{{imprimante.modele}}</td>
+                    <td>{{imprimante.site}}</td>
+                    <td>{{imprimante.garantie}}</td>
+                    <td><a routerLink="/toner" style="color:black;">{{imprimante.type_toner}}</a></td>
+                    <td>{{imprimante.description}}</td>
+                    <td> <button *ngIf="admin" class="btn btn-ilyesh" data-toggle="modal" data-target="#exampleModal"
+                            (click)="getId(imprimante)"><i class="bi bi-pen"></i></button><button *ngIf="admin"
+                            class="btn btn-outline-danger" type="button" (click)="deleteImprimante(imprimante.num)"><i
+                                class="bi bi-trash"></i></button> </td>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modifier</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form #f="ngForm" class="formPrj">
+
+                                        <div class="form-group">
+                                            <label for="Site">Site</label>
+                                            <input type="text" class="form-control" id="Site" name="site" ngModel>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Déscription</label>
+                                            <input type="text" class="form-control" id="Nom nom_reseau"
+                                                aria-describedby="etat" ngModel name="description">
+
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <label for="description">Type Toner</label>
+                                            <input type="text" class="form-control" id="Nom nom_reseau"
+                                                aria-describedby="etat" ngModel name="type_toner">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Garantie</label>
+                                            <input type="text" class="form-control" id="Nom nom_reseau"
+                                                aria-describedby="etat" ngModel name="garantie">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Modéle</label>
+                                            <input type="text" class="form-control" id="Nom nom_reseau"
+                                                aria-describedby="etat" ngModel name="modele">
+
+                                        </div>
+
+                                        <div class="buttons">
+                                            <button type="button" (click)="onUpdate(f)" class="btn"
+                                                data-dismiss="modal">Save
+                                                changes</button>
+                                            <button type="button" class="btn"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

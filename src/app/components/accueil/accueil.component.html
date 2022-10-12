@@ -1,0 +1,99 @@
+<!-- <app-home-page></app-home-page> -->
+
+<!-- <h1 class="pageTitle">
+</h1> -->
+<!-- <h1 class="pageTitle">Note
+  
+</h1> -->
+
+<div id="topHome" class="container-fluid container-body">
+  <div class="userProfile">
+    <div class="userProfileIcon">
+      <i class="bi bi-person userIcon"></i>
+    </div>
+    <p class="bodyProfile">
+      <span class="holaMsg">Bienvenue {{name}} !</span>
+      <span class="statusInfo">Status : {{nameCompte}} </span>
+    </p>
+    <button type="button" routerLink="/sign_in" class="btn btnLogOut">
+      <i class="bi bi-box-arrow-left"></i>
+    </button>
+  </div>
+  <div class="logoContainer">
+    <img src="assets/images/parenco-logo.svg" alt="perencoLogo" class="logo">
+  </div>
+</div>
+
+<div id="pageContent" class="container">
+  <div class="ro">
+    <div class="parc elem">
+      <div class="icon">
+        <i class="bi bi-pc-display"></i>
+        <p>ParcIT</p>
+      </div>
+      <div class="body">
+        <p class="desc">La page de la Parc It contient tous les ordinateurs de Perenco Tunisia (WorkStation , Laptop , Desktop ),chaque ordinateur est caractérisé par un numéro de série , un numéro de réseau , un site , un utilisateur , date_achat , garantie , etat , un modéle t un fournisseur  </p>
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-danger" routerLink="/machines">Consulter...</button>
+          <button type="button" class="btn btn-outline-danger" routerLink="/add_machine" *ngIf="admin" >Ajouter dans ParcIT</button>
+        </div>
+      </div>
+    </div>
+    <div class="impr elem">
+      <div class="icon">
+        <i class="bi bi-printer"></i>
+        <p>Imprimante</p>
+      </div>
+      <div class="body">
+        <p class="desc">La page Imprimante contient tous les Imprimantes de Perenco Tunisia , chaque Imprimante est caractérisé par un modéle , un numéro de serie , site , garantie , type toner et une déscription </p>
+        <div class="buttons">
+          <br><br> 
+          <button type="button" class="btn btn-outline-danger" routerLink="/imprimantes">Consulter...</button>
+          <button type="button" class="btn btn-outline-danger" routerLink="/add_imprimante" *ngIf="admin" >Ajouter Imprimante</button>
+        </div>
+      </div>
+    </div> 
+    <div class="cons elem">
+      <div class="icon">
+        <i class="bi bi-box-seam"></i>
+        <p>Consommables</p>
+      </div>
+      <div class="body">
+        <p class="desc">La page Consommables contient tous les Consommables de Perenco Tunisia elle est formé par des différents éléments  (Toners , Cables , Souris , Claviers , Ecran , DockStation , ) </p>
+        <div class="buttons">
+          <br> <br>    
+          <button type="button" class="btn btn-outline-danger" routerLink="/toner">Consulter...</button>
+        </div>
+      </div>
+    </div>
+    <div class="spar elem">
+      <div class="icon">
+        <i class="bi bi-router"></i>
+        <p>Spares</p>
+      </div>
+      <div class="body">
+        <p class="desc">La page Spares contient tous les Equipements réseau de Perenco Tunisia chaque équipement est caractérisé par un numéro de serie , un modéle et type ainsi la quantitée de stock  par modéle    </p>
+        <div class="buttons">
+          <br> 
+          <button type="button" class="btn btn-outline-danger" routerLink="/spare">Consulter...</button>
+        </div>
+      </div>
+    </div>
+    <div class="user elem" *ngIf="admin">
+      <div class="icon">
+        <i class="bi bi-people"></i>
+        <p>Utilisateurs</p>
+      </div>
+      <div class="body">
+        <p class="desc">La page Utilisateurs est dédier pour l'administrateur seulement elle contient la liste des utilisateurs et elle permet de gérer les comptes </p>
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-danger" routerLink="/users" >Consulter...</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>1975-2022 &copy; Perenco</p>
+</footer>

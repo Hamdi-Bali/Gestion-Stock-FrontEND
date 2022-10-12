@@ -1,0 +1,154 @@
+<app-home-page></app-home-page>
+<div class="row">
+  <div class="spare">
+    <h1 class="pageTitle">Spares
+      <span> <button type="button" class="btn btn-add" data-toggle="modal"
+          data-target="#exampleModal" *ngIf="admin">
+          <i class="bi bi-plus-lg"></i>
+        </button></span>
+    </h1>
+    <form class="navbar-search form-inline mr-3 d-none d-md-flex ml-lg-auto">
+      <div class="form-group mb-0">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+          <input class="form-control" (ngModelChange)="searchDeptNum(key.value)" #key="ngModel" ngModel
+            placeholder="Numéro de Série" type="text" name="key">
+        </div>
+
+      </div>
+      <div class="form-group mb-0">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptModele(key.value)" #key="ngModel" ngModel
+            placeholder="Modéle" type="text" name="key">
+        </div>
+      </div>
+      <div class="form-group mb-0">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptType(key.value)" #key="ngModel" ngModel
+            placeholder="Type" type="text" name="key">
+        </div>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Numéro Série</th>
+          <th scope="col">Modéle</th>
+          <th scope="col">Type</th>
+          <th scope="col" *ngIf="admin">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let spare of spares ">
+          <th scope="row">{{spare.num_serie}}</th>
+          <td>{{spare.modele}}</td>
+          <td>{{spare.type}}</td>
+          <td><button class="btn btn-outline-danger" type="button" (click)="deleteSpare(spare.id)" *ngIf="admin"><i
+                class="bi bi-trash"></i></button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="spare">
+
+    <h1 class="pageTitle">Quantités
+      <span>Total : {{spares.length}}</span>
+    </h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Modéle</th>
+          <th scope="col">Qte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of  spareinfo ">
+          <th scope="row">{{item.modele}}</th>
+          <td>{{item.qte}}</td>
+        </tr>
+        <tr>
+          <td>WS-C3750G-48PS-E</td>
+          <td> <input type="number" value="7" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>WS-C3750G-24PS-S</td>
+          <td> <input type="number" value="1" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>WS-C3750G-24PS-E</td>
+          <td> <input type="number" value="2" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td> WS-C3750G-12S-E</td>
+          <td> <input type="number" value="1" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>SSG-140-SH</td>
+          <td> <input type="number" value="1" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>Fortinet 30E</td>
+          <td> <input type="number" value="2" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>Fortinet 100D</td>
+          <td> <input type="number" value="1" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>CISCO3825-HSEC/K9</td>
+          <td> <input type="number" value="3" class="qteInput"> </td>
+        </tr>
+        <tr>
+          <td>AIR-CAP2602I-E-K9</td>
+          <td> <input type="number" value="9" class="qteInput"> </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter Toner</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form (ngSubmit)="addSpare(f)" #f="ngForm" class="formPrj">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Numéro de Série</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ngModel
+                name="num_serie">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom Modéle</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ngModel
+                name="modele">
+
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Type </label>
+              <input type="text" placeholder="Switch,Routeur..." class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" ngModel name="type">
+
+            </div>
+
+
+          </div>
+          <div class="buttons">
+            <button type="submit" class="btn" (click)="addSpare(f)" data-dismiss="modal"
+              data-dismiss="modal">Ajouter</button>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

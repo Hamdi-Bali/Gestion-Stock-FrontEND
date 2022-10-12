@@ -1,0 +1,583 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --whiteNavbar: #edf2f4;
+    --whitePalette: #fff;
+    --bluePetrolePalette: #003049;
+}
+
+.navbar {
+    padding: 0;
+    background-color: var(--whiteNavbar);
+}
+
+.navbar-collapse {
+    height: 8em;
+}
+
+.navbar-nav {
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 50%;
+}
+
+nav #logoPerenco {
+    width: 16.3em;
+    height: 100%;
+    margin-right: 15px;
+}
+
+.navbar-nav li {
+    flex-grow: 0.05;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all .6s ease-out;
+    background-image: linear-gradient(90deg, var(--whiteNavbar) 0%, var(--whiteNavbar) 50%, var(--bluePetrolePalette) 50%, var(--bluePetrolePalette) 100%);
+    background-size: 200%;
+}
+
+.navbar-nav li:hover {
+    background-position: -100% 100%;
+}
+
+.navbar-nav li:nth-child(1) {
+    background-color: var(--bluePetrolePalette);
+    background-image: none;
+    background-size: 0;
+}
+
+.navbar-nav li:nth-child(1) a {
+    color: var(--whitePalette);
+}
+
+.navbar-nav li a {
+    color: var(--bluePetrolePalette);
+    font-size: 18px;
+    font-weight: 300;
+    flex-grow: 1;
+    transition: all .8s ease-out;
+}
+
+.navbar-nav li a:hover {
+    text-decoration: underline var(--whitePalette);
+}
+
+/* DropDownStyle */
+.navbar-nav li.dropdown:hover a {
+    color: var(--bluePetrolePalette);
+}
+
+.navbar-nav li.dropdown:hover a.userNormal {
+    color: var(--whitePalette);
+}
+
+.navbar-nav li.show {
+    background-position: -100% 100%;
+}
+
+.navbar-nav li.show a {
+    color: var(--whitePalette);
+}
+
+.navbar-nav li.dropdown div.dropdown-menu {
+    background-color: var(--bluePetrolePalette);
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+}
+
+.navbar-nav li.dropdown div.dropdown-menu a {
+    color: var(--whitePalette);
+    text-decoration: none;
+}
+
+.navbar-nav li:hover a,
+.navbar-nav li.dropdown:hover a.firstAnchor {
+    color: var(--whitePalette);
+}
+
+.navbar-nav li.dropdown div.dropdown-menu a:hover {
+    background-color: var(--bluePetrolePalette);
+}
+
+.navbar-nav li .dropdown-menu a:hover::before {
+    content: "\F138";
+    font-family: 'bootstrap-icons';
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.navbar-nav li .dropdown-menu a::before {
+    content: "";
+    font-family: 'bootstrap-icons';
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.navbar-nav li .dropdown-menu a:hover::before {
+    content: "\F138";
+}
+
+/* Pages */
+.pageTitle {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.5em 15px;
+    background-color: var(--bluePetrolePalette);
+    color: var(--white);
+    font-size: 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.pageTitle::before {
+    content: "\F132";
+    font-family: 'bootstrap-icons';
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.pageTitle span {
+    font-size: 40px;
+    font-weight: 400;
+    background-color: transparent;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.pageTitle .btn-add {
+    border: 1px solid var(--whitePalette);
+    color: var(--whitePalette);
+    border-radius: 0;
+    font-size: 25px;
+    transform: scale(.8);
+    transition: all .3s ease-out;
+}
+
+.pageTitle .btn-add i {
+    vertical-align: middle;
+}
+
+.pageTitle .btn-add:hover {
+    transform: scale(1);
+}
+
+.table {
+    margin: 1em 0;
+}
+
+.table thead {
+    color: var(--whitePalette);
+    background-color: var(--whiteNavbar);
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+
+.table tbody th {
+    background-color: var(--whiteNavbar);
+}
+
+.table tbody th,
+.table tbody td {
+    border-top: 0;
+    border-bottom: 1px solid var(--whiteNavbar);
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    border-right: 1px solid var(--whiteNavbar);
+    border-left: 1px solid var(--whiteNavbar);
+    color: var(--bluePetrolePalette);
+}
+
+.table tbody td .buttonMinusADD {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+/* .table tbody td .buttonMinus
+{
+    color: #d90429;
+}
+
+.table tbody td .buttonADD
+{
+    color: #66CC66;
+} */
+
+.btn-ilyesh {
+    border: 1px solid var(--bluePetrolePalette);
+    color: var(--bluePetrolePalette);
+    margin-right: 10px;
+}
+
+.btn-ilyesh:hover {
+    background-color: var(--bluePetrolePalette);
+    color: var(--whitePalette);
+}
+
+.table tbody td .accepter {
+    color: #66CC66;
+}
+
+.table tbody td .refuser {
+    color: #d90429;
+}
+
+.table tbody td .qteInput {
+    color: var(--bluePetrolePalette);
+    text-align: center;
+    border: 1px solid #DDD;
+}
+
+.table thead th {
+    border: 0;
+    vertical-align: middle;
+    text-align: center;
+    color: var(--bluePetrolePalette);
+}
+
+/* SearchForm */
+.navbar-search {
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-search .form-group {
+    margin: 0;
+}
+
+.navbar-search .form-group input {
+    /* border-right: 1px solid var(--bluePetrolePalette);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--bluePetrolePalette);
+    font-size: 16px;
+    text-align: center;
+    border-top: 1px solid var(--bluePetrolePalette);
+    border-bottom: 1px solid var(--bluePetrolePalette);
+    border-left: 0;
+    border-radius: 0; */
+
+    border-right: 3px solid var(--bluePetrolePalette);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--bluePetrolePalette);
+    font-size: 16px;
+    text-align: center;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.navbar-search .form-group input:focus {
+    color: var(--bluePetrolePalette);
+    box-shadow: none;
+}
+
+.navbar-search .form-group .input-group-prepend span {
+    color: var(--white);
+    background-color: var(--bluePetrolePalette);
+    border: 1px solid var(--bluePetrolePalette);
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.container-body {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.row div.spare:nth-child(1) {
+    margin-right: 1em;
+}
+
+.row div.spare {
+    flex-grow: 1;
+}
+
+/* UserList */
+.usersList {
+    margin: 1em 0;
+}
+
+.usersList .card {
+    margin: 0 1em;
+    border: 1px solid var(--bluePetrolePalette);
+    box-shadow: 5px 5px 5px 0px var(--bluePetrolePalette);
+}
+
+.usersList .card i.userIcon {
+    color: var(--bluePetrolePalette);
+    text-align: center;
+    font-size: 5em;
+}
+
+.usersList .card-body {
+    padding: 0;
+    padding: 0 1em 1em 1em;
+}
+
+.usersList .card-body p span {
+    font-weight: 700;
+}
+
+.usersList .card-body p {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--bluePetrolePalette);
+}
+
+.usersList .footerCard {
+    border-top: 1px solid var(--bluePetrolePalette);
+    padding: 1em;
+    text-align: center;
+}
+
+/* HomePageStyle */
+#topHome .logoContainer {
+    background-color: var(--whiteNavbar);
+}
+
+#topHome .logoContainer .logo {
+    display: block;
+    height: 9em;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#topHome .userProfile {
+    padding: 0.5em 30px;
+    background-color: var(--bluePetrolePalette);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#topHome .userProfile .userProfileIcon {
+    margin: 30px 30px 30px 0;
+    border-radius: 50%;
+    background-color: var(--whiteNavbar);
+    color: var(--bluePetrolePalette);
+    text-align: center;
+    width: 1.9em;
+    height: 1.9em;
+    font-size: 2em;
+    overflow: hidden;
+    font-family: cursive;
+}
+
+#topHome .userProfile .userProfileIcon i.userIcon {
+    vertical-align: middle;
+}
+
+#topHome .userProfile .bodyProfile {
+    margin: 0;
+    line-height: 1em;
+}
+
+#topHome .userProfile .bodyProfile span.holaMsg {
+    display: block;
+}
+
+#topHome .userProfile .bodyProfile span.statusInfo {
+    font-size: .6em;
+    color: #DDD;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#topHome .userProfile .btnLogOut {
+    font-size: 2em;
+    font-weight: 300;
+    background-color: transparent;
+    flex-grow: 1;
+    text-align: right;
+    color: var(--white);
+}
+
+#topHome .userProfile .btnLogOut i {
+    vertical-align: middle;
+}
+
+/* HomePageIcons */
+#topHome {
+    margin-bottom: 1em;
+}
+
+#pageContent {
+    margin-bottom: 1em;
+}
+
+#pageContent .ro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+#pageContent div.elem {
+    padding: 1em 1em 0 1em;
+    background-color: var(--bluePetrolePalette);
+    width: 49%;
+    border-radius: 7px;
+    color: white;
+}
+
+#pageContent div.user {
+    flex-grow: 1;
+}
+
+#pageContent div.elem div {
+    margin-bottom: 1em;
+}
+
+#pageContent div .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageContent div .icon i {
+    font-size: 3em;
+}
+
+#pageContent div .icon p {
+    margin: 0;
+    font-size: 2em;
+    margin-left: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#pageContent div .body .desc {
+    margin-bottom: 1em;
+    font-family: 'Montserrat', sans-serif;
+    color: #eee;
+}
+
+#pageContent div .body .buttons {
+    text-align: center;
+}
+
+#pageContent div .body .buttons button {
+    color: var(--bluePetrolePalette);
+    margin-right: 1em;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    border: none;
+    transition: all .5s ease-in-out;
+}
+
+#pageContent div .body .buttons button:hover {
+    transform: scale(1.1);
+}
+
+#pageContent div .body .buttons button:focus {
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background-color: var(--whiteNavbar);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    padding: 1em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: var(--bluePetrolePalette);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* FormsStyle */
+.formPrj {
+    margin: 1em;
+    padding: 1em;
+    background-color: var(--whiteNavbar);
+    color: var(--bluePetrolePalette);
+    font-family: 'Roboto', sans-serif;
+}
+
+.formPrj label.title {
+    background-color: var(--bluePetrolePalette);
+    color: var(--white);
+    padding: 10px;
+    font-size: 17px;
+}
+
+.formPrj input {
+    border: 0;
+    background: var(--white);
+    color: var(--bluePetrolePalette);
+}
+
+.formPrj input:focus {
+    border: 0;
+    background: var(--white);
+    color: var(--bluePetrolePalette);
+}
+
+.formPrj .buttons
+{
+    text-align: center;
+}
+
+.formPrj button
+{
+    background-color: var(--bluePetrolePalette);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0;
+    margin-right: 15px;
+}
+
+.formPrj button:disabled:hover
+{
+    background-color: var(--bluePetrolePalette);
+    color: var(--white);
+    border: 1px solid var(--bluePetrolePalette);
+}
+
+.formPrj button:hover
+{
+    background-color: var(--white);
+    color: var(--bluePetrolePalette);
+    border: 1px solid var(--bluePetrolePalette);
+}
+
+.modal-header
+{
+    background-color: var(--bluePetrolePalette);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-header span
+{
+    color: white;
+}
+
+@media screen and (max-width: 992px) {
+    #pageContent div.elem {
+        flex-grow: 1;
+    }
+}

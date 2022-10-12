@@ -1,0 +1,211 @@
+<app-home-page></app-home-page>
+<div class="row" id="main-container">
+  <div class="container-fluid container-body">
+
+    <h1 class="pageTitle">
+      Liste Des Equipements
+      <span>Total : {{machine.length}}</span>
+   <button class="btn btn-add" (click)="refresh()">Refresh</button>
+    </h1>
+
+    <form class="navbar-search">
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+          <input class="form-control" (ngModelChange)="searchDeptNum(key.value)" #key="ngModel" ngModel
+            placeholder="Numéro de Série" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptModele(key.value)" #key="ngModel" ngModel
+            placeholder="Modéle" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDept(key.value)" #key="ngModel" ngModel
+            placeholder="Nom Réseau" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptNom(key.value)" #key="ngModel" ngModel
+            placeholder=" Utilisateur" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptSite(key.value)" #key="ngModel" ngModel
+            placeholder=" Site" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptFour(key.value)" #key="ngModel" ngModel
+            placeholder="Fournisseur" type="text" name="key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptDateAchat(key.value)" #key="ngModel" ngModel
+            placeholder="Date Achat" type="text" name="key">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <input class="form-control" (ngModelChange)="searchDeptType(key.value)" #key="ngModel" ngModel
+            placeholder="Type" type="text" name="key">
+        </div>
+      </div>
+
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Numéro de serie</th>
+          <th scope="col">Modéle</th>
+          <th scope="col">Site</th>
+          <th scope="col">Utilisateur</th>
+          <th scope="col">Date_achat</th>
+          <th scope="col">Fournisseur</th>
+          <th scope="col">Garantie</th>
+          <th scope="col">Nom Réseau</th>
+          <th scope="col">Etat</th>
+          <th scope="col">Type</th>
+          <th scope="col" *ngIf="admin">Actions</th>
+          <!-- <th scope="col">Total : {{machine.length}}</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mach of machine ; let i = index ">
+          <th scope="row">{{mach.num}}</th>
+          <td>{{mach.nom}}</td>
+          <td>{{mach.site}}</td>
+          <td>{{mach.utilisateur}}</td>
+          <td>{{mach.date_achat}}</td>
+          <td>{{mach.fournisseur}}</td>
+          <td>{{mach.garantie}}</td>
+          <td>{{mach.nom_reseau}}</td>
+
+          <td><i *ngIf="machine[i].etat== testEtatTrue ; else nonetat" class="bi bi-check-circle accepter"></i></td>
+          <ng-template #nonetat><i *ngIf="machine[i].etat== testEtatFalse" class="bi bi-x-circle refuser"></i>
+          </ng-template>
+          <td>{{mach.type}}</td>
+          <td> <button *ngIf="admin" class="btn btn-ilyesh" data-toggle="modal" data-target="#updateMachineModal"
+              data-original-title="Edit" (click)="onOpenModalv2(mach,'Edit')"><i class="bi bi-pen"></i></button>
+            <button *ngIf="admin" class="btn btn-outline-danger" type="button" (click)="deleteMachine(mach.id)"><i
+                class="bi bi-trash"></i></button>
+          </td>
+
+
+          <div class="modal fade" id="updateMachineModal" tabindex="-1" aria-labelledby="editModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modifier </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="formPrj">
+                    <div class="form-group">
+                      <label for="utilisateur">Nom Utilisateur </label>
+                      <input type="text" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="utilisateur" placeholder="{{mach.utilisateur}}">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="Site">Site</label>
+                      <input type="text" class="form-control" id="Site" name="site" ngModel placeholder="{{mach.site}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="type de compte">Etat</label>
+                      <select name="etat" ngModel class="custom-select" id="inputGroupSelect04"
+                        aria-label="Example select with button addon">
+                        <option value="true">En Marche</option>
+                        <option value="false">En panne</option>
+                        <option value="spare">Spare</option>
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="Etat">Nom Réseau </label>
+                      <input type="text" class="form-control" id="Nom nom_reseau" aria-describedby="etat" ngModel
+                        name="nom_reseau" placeholder="{{mach.nom_reseau}}">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="utilisateur">Date Achat </label>
+                      <input type="date" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="date_achat">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="utilisateur">Fournisseur </label>
+                      <input type="text" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="fournisseur">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="utilisateur">Garantie </label>
+                      <input type="date" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="garantie">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="utilisateur">Modéle </label>
+                      <input type="text" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="modele">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="utilisateur">Numéro De Série </label>
+                      <input type="text" id="pl1" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" ngModel name="num_serie">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="type de machine">Type</label>
+                      <select name="type" ngModel class="custom-select" id="inputGroupSelect04"
+                        aria-label="Example select with button addon">
+                        <option value="Laptop">Laptop</option>
+                        <option value="Desktop">Desktop</option>
+                        <option value="WorkStation">WorkStation</option>
+                      </select>
+                    </div>
+                    <div class="buttons">
+                      <button type="button" class="btn" (click)="onUpdateMachine(f)" data-dismiss="modal">Save
+                        changes</button>
+                      <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </form>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
